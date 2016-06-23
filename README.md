@@ -1,30 +1,24 @@
-##JWT.io
+##JWT Debugger Extension
 
-<img src="https://cloudup.com/csK82bzTY8j+"/>
-
-[![Build Status](https://travis-ci.org/jsonwebtoken/jsonwebtoken.github.io.png?branch=master)](https://travis-ci.org/jsonwebtoken/jsonwebtoken.github.io)
+![JWT Debugger screenshot](/publishing/screenshot-2.png?raw=true)
 
 ### How to build
-
-> Warning: `index.html` in the root folder is a generated file please edit `html/index.html`.
-
 First, install the required dependencies:
 
 ```sh
-npm install && bower install
+npm install
 ```
 
-In order to build (and run) the project execute:
+In order to build the project execute:
 
 ```sh
-grunt
+grunt chrome-extension
 ```
 
-And then go to http://0.0.0.0:8000.
+The resulting files will be located in the ```dist``` directory. Open Chrome, go to ```Extensions```, enable ```Developer Mode```, and then load the unpacked extension from the ```dist``` directory.
 
-That will create the css from the less files, minify the javascript and generate `index.html` from `html/index.html`. 
-
-
-### Happy hacking!
-
-
+### Hacking
+Main JavaScript files are located inside the ```js``` directory.
+HTML files are generated from the Jade files located in ```view```.
+Dependencies are handled with ```npm``` and bundled using Webpack.
+The ```extension-deps``` directory is for static dependencies.
