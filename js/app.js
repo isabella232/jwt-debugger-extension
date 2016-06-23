@@ -39,4 +39,20 @@ if(navigator.platform.toLowerCase().indexOf('mac') !== -1) {
     e.text(text.replace('Ctrl', 'Cmd'));
 }
 
-$(document).ready(initJwtView);
+$(document).ready(function() {
+    initJwtView();
+
+    //Google Analytics
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37952868-23']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script');
+      ga.type = 'text/javascript';
+      ga.async = true;
+      ga.src = 'https://ssl.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ga, s);
+    })();
+});
