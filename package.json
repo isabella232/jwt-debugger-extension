@@ -36,9 +36,5 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "test": "grunt test --verbose",
-    "start": "node server.js",
-    "watch": "grunt",
-    "postinstall": "bower install"
   }
 }
