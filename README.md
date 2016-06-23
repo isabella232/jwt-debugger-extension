@@ -1,6 +1,6 @@
 ##JWT Debugger Extension
 
-![JWT Debugger screenshot](/publishing/screenshot-2.png?raw=true)
+![JWT Debugger screenshot](/publishing/screenshot-1.png?raw=true)
 
 ### How to build
 First, install the required dependencies:
