@@ -63,7 +63,9 @@ function isToken(token) {
           if(header.error) {
               return false;
           }
-          return JSON.parse(header.result).typ === 'JWT';
+
+          let parsed = JSON.parse(header.result);
+          return parsed.alg === 'HS256' || parsed.alg === 'RS256';
       }
   } catch (e) {
   }
