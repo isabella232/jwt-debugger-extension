@@ -54,6 +54,7 @@ module.exports = function (grunt) {
 
                     'extension-deps/**',
                     'js/webstorage.js',
+                    'js/check-install.js',
                     'js/app.bundle.js',
                     'css/**',
                     'assets/**'
