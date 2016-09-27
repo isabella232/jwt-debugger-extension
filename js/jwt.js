@@ -1,4 +1,6 @@
 import CryptoJS from 'crypto-js/core';
+import 'crypto-js/enc-base64.js';
+import jsrsasign from 'jsrsasign';
 
 // XXX Hack to prevent hextorstr function used by JWS send a string instead of
 // a Word Array. On this way, no string decoding needs to take place and Crypto
@@ -69,7 +71,7 @@ window.sign = function (algorithm, header, payload, key, isSecretBase64Encoded) 
   if(algorithm === 'HS256'){
     if (isSecretBase64Encoded) {
       try {
-        key = window.b64utob64(key);
+        key = jsrsasign.b64utob64(key);
         key = CryptoJS.enc.Base64.parse(key).toString();
       } catch (e) {
         return {result: '', error: e};
@@ -80,7 +82,7 @@ window.sign = function (algorithm, header, payload, key, isSecretBase64Encoded) 
   }
 
   try {
-    value = KJUR.jws.JWS.sign(algorithm, headerAsJSON, payloadAsJSON, key);
+    value = jsrsasign.KJUR.jws.JWS.sign(algorithm, headerAsJSON, payloadAsJSON, key);
     /*value = jws.sign({
         header: JSON.parse(header),
         payload: payloadAsJSON,
@@ -95,7 +97,7 @@ window.sign = function (algorithm, header, payload, key, isSecretBase64Encoded) 
 
 window.isValidBase64String = function (s) {
   try {
-    s = window.b64utob64(s);
+    s = jsrsasign.b64utob64(s);
     CryptoJS.enc.Base64.parse(s).toString();
     return true;
   } catch (e) {
@@ -110,7 +112,7 @@ window.verify = function (algorithm, value, key, isSecretBase64Encoded) {
   if (algorithm === 'HS256'){
     if (isSecretBase64Encoded) {
       try {
-        key = window.b64utob64(key);
+        key = jsrsasign.b64utob64(key);
         key = CryptoJS.enc.Base64.parse(key).toString();
       } catch (e) {
         return {result: '', error: e};
@@ -121,7 +123,7 @@ window.verify = function (algorithm, value, key, isSecretBase64Encoded) {
   }
 
   try {
-    result = KJUR.jws.JWS.verify(value, key);
+    result = jsrsasign.KJUR.jws.JWS.verify(value, key);
     //result = jws.verify(value, algorithm, key);
   } catch (e) {
     error = e;
